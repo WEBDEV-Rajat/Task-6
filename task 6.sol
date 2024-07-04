@@ -21,10 +21,9 @@ contract StudentGrades {
         require(msg.sender == owner, "Not the contract owner");
         _;
     }
-    function addGrade(uint id, string memory studentName, string memory subject, uint grade) public onlyOwner{
-       require(id > studentCount);
+    function addGrade(string memory studentName, string memory subject, uint grade) public onlyOwner{
        studentCount += 1;
-       Grade memory newStudent = Grade(id, studentName, subject, grade);
+       Grade memory newStudent = Grade(studentCount, studentName, subject, grade);
        students.push(newStudent);
        student = newStudent;
     }
